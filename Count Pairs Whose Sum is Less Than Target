@@ -1,0 +1,13 @@
+class Solution {
+    public int countPairs(List<Integer> nums, int target) {
+        Integer[] numsArray = nums.toArray(new Integer[nums.size()]);
+        int count=0;
+        for(int i=0;i<numsArray.length;i++){
+            for(int j=i+1;j<numsArray.length;j++){
+            if(numsArray[i]+numsArray[j]<target)
+            count++;
+            }
+        }
+        return count;
+    }
+}
