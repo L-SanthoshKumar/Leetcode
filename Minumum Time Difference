@@ -1,0 +1,19 @@
+class Solution {
+    public int findMinDifference(List<String> timePoints) {
+        int [] min=new int[timePoints.size()];
+        for(int i=0;i<timePoints.size();i++){
+            String time=timePoints.get(i);
+            int hours=Integer.parseInt(time.substring(0,2));
+            int minutes=Integer.parseInt(time.substring(3));
+            min[i]=hours*60+minutes;
+        } 
+        Arrays.sort(min);
+        int minDiff = Integer.MAX_VALUE;
+        for (int i = 1; i < min.length; i++) {
+            minDiff = Math.min(minDiff, min[i] - min[i - 1]);
+        }
+        int circularDiff = 24 * 60 - min[min.length - 1] + min[0];
+        minDiff = Math.min(minDiff, circularDiff);
+        return minDiff;         
+    }
+}
