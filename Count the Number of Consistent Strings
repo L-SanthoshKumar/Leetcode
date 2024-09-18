@@ -1,0 +1,21 @@
+class Solution {
+    public int countConsistentStrings(String allowed, String[] words) {
+        int count =0;
+        List<Character> allow=new ArrayList<>();
+        for(char ch:allowed.toCharArray()){
+            allow.add(ch);
+        }
+        for(String word:words){
+            boolean isConsistent=true;
+            for(char c:word.toCharArray()){
+                    if(!(allow.contains(c))){
+                        isConsistent=false;
+                       
+                    }
+            }
+            if(isConsistent)
+            count++;
+        }
+        return count;
+    }
+}
